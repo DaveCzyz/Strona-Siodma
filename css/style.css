@@ -1,0 +1,363 @@
+html, body {
+  height: auto;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; }
+
+header {
+  width: 100vw;
+  height: 53px;
+  background: #4d90fe; }
+  header p {
+    color: white;
+    padding: 15px;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase; }
+
+.bgImage {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0.8))), url("../images/bg-1.jpg") repeat 0 0;
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 100%), url("../images/bg-1.jpg") repeat 0 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 100%), url("../images/bg-1.jpg") repeat 0 0;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100%; }
+
+.generator {
+  max-width: 1300px;
+  padding-top: 40px;
+  margin: 0px auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row; }
+  .generator .left-side #map {
+    margin-top: 0px;
+    height: 500px;
+    width: 750px;
+    border: 1px solid black; }
+  .generator .left-side .controls {
+    margin-top: 10px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    width: 300px; }
+  .generator .left-side #origin-input,
+  .generator .left-side #destination-input,
+  .generator .left-side #waypoint-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+    width: 300px; }
+  .generator .left-side #origin-input:focus,
+  .generator .left-side #destination-input:focus {
+    border-color: #4d90fe; }
+  .generator .left-side #mode-selector {
+    color: #fff;
+    background-color: #4d90fe;
+    margin-left: 12px;
+    padding: 5px 11px 0px 11px; }
+  .generator .left-side #mode-selector label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300; }
+  .generator .left-side #traffic {
+    margin-top: 20px;
+    margin-left: -20px; }
+  .generator .right-side {
+    width: 500px;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
+    .generator .right-side .summaryKM {
+      padding: 10px;
+      background: #4d90fe;
+      color: white;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      border: 1px solid black;
+      margin: 10px;
+      width: 150px;
+      height: 40px; }
+    .generator .right-side .stawka {
+      padding: 10px;
+      background: #4d90fe;
+      color: white;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      border: 1px solid black;
+      margin: 10px;
+      width: 220px;
+      height: 40px; }
+    .generator .right-side .auto {
+      padding: 10px;
+      background: #4d90fe;
+      color: white;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      border: 1px solid black;
+      margin: 10px;
+      width: 390px;
+      height: 40px; }
+    .generator .right-side .czas {
+      padding: 10px;
+      background: #4d90fe;
+      color: white;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      border: 1px solid black;
+      margin: 10px;
+      width: 260px;
+      height: 40px; }
+    .generator .right-side .transitTime {
+      padding: 10px;
+      background: #4d90fe;
+      color: white;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      border: 1px solid black;
+      margin: 10px;
+      width: 110px;
+      height: 40px; }
+    .generator .right-side .prom {
+      padding: 10px;
+      background: #4d90fe;
+      color: white;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      border: 1px solid black;
+      margin: 10px;
+      width: 260px;
+      height: 250px; }
+    .generator .right-side .waluta {
+      padding: 10px;
+      background: #4d90fe;
+      color: white;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      border: 1px solid black;
+      margin: 10px;
+      width: 110px;
+      height: 150px; }
+    .generator .right-side #generuj {
+      height: 35px;
+      background: #4d90fe;
+      color: white;
+      font-weight: bold;
+      border: 0;
+      cursor: pointer;
+      margin: 0px;
+      border-radius: 5px;
+      margin: 0 auto; }
+      .generator .right-side #generuj:focus {
+        border: none;
+        outline: none; }
+      .generator .right-side #generuj:active {
+        border: none;
+        outline: none; }
+
+h1 {
+  display: inline;
+  font-size: 35px; }
+
+button {
+  height: 30px;
+  background: #4d90fe;
+  color: white;
+  font-weight: bold;
+  border: 0;
+  cursor: pointer; }
+
+.generujTytul {
+  height: 40px;
+  width: 90%;
+  margin: 30px auto;
+  max-width: 1300px; }
+  .generujTytul #mailTitle::-moz-selection {
+    background: transparent; }
+  .generujTytul #mailTitle::selection {
+    background: transparent; }
+  .generujTytul #mailTitle .origin::-moz-selection {
+    background: transparent; }
+  .generujTytul #mailTitle .origin::selection {
+    background: transparent; }
+  .generujTytul #mailTitle .dest::-moz-selection {
+    background: transparent; }
+  .generujTytul #mailTitle .dest::selection {
+    background: transparent; }
+  .generujTytul button {
+    height: 35px;
+    background: #4d90fe;
+    color: white;
+    font-weight: bold;
+    border: 0;
+    cursor: pointer;
+    margin: 0px;
+    border-radius: 5px; }
+    .generujTytul button:focus {
+      border: none;
+      outline: none; }
+    .generujTytul button:active {
+      border: none;
+      outline: none; }
+  .generujTytul p {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0;
+    padding: 0; }
+
+.mailContent {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  padding-bottom: 80px;
+  max-width: 1300px;
+  margin: 0 auto; }
+  .mailContent .standardMail {
+    width: 49%;
+    height: 200px;
+    overflow-y: scroll;
+    border: 1px solid black;
+    background: white; }
+    .mailContent .standardMail p:first-child {
+      display: inline-block;
+      font-weight: bold;
+      font-size: 20px;
+      margin: 0;
+      padding: 10px; }
+    .mailContent .standardMail button {
+      height: 35px;
+      background: #4d90fe;
+      color: white;
+      font-weight: bold;
+      border: 0;
+      cursor: pointer;
+      margin: 0px;
+      border-radius: 5px; }
+      .mailContent .standardMail button:focus {
+        border: none;
+        outline: none; }
+      .mailContent .standardMail button:active {
+        border: none;
+        outline: none; }
+    .mailContent .standardMail #mail {
+      padding: 10px; }
+      .mailContent .standardMail #mail::-moz-selection, .mailContent .standardMail #mail .setVan::-moz-selection, .mailContent .standardMail #mail .setPrice::-moz-selection, .mailContent .standardMail #mail .setLoad::-moz-selection, .mailContent .standardMail #mail .setTT::-moz-selection {
+        background: transparent; }
+      .mailContent .standardMail #mail::selection, .mailContent .standardMail #mail .setVan::selection, .mailContent .standardMail #mail .setPrice::selection, .mailContent .standardMail #mail .setLoad::selection, .mailContent .standardMail #mail .setTT::selection {
+        background: transparent; }
+      .mailContent .standardMail #mail br::-moz-selection {
+        background: transparent; }
+      .mailContent .standardMail #mail br::selection {
+        background: transparent; }
+  .mailContent .htmlMail {
+    width: 49%;
+    height: 200px;
+    overflow-y: scroll;
+    border: 1px solid black;
+    background: white; }
+    .mailContent .htmlMail p:first-child {
+      display: inline-block;
+      font-weight: bold;
+      font-size: 20px;
+      margin: 0;
+      padding: 10px; }
+    .mailContent .htmlMail button {
+      height: 35px;
+      background: #4d90fe;
+      color: white;
+      font-weight: bold;
+      border: 0;
+      cursor: pointer;
+      margin: 0px;
+      border-radius: 5px; }
+      .mailContent .htmlMail button:focus {
+        border: none;
+        outline: none; }
+      .mailContent .htmlMail button:active {
+        border: none;
+        outline: none; }
+    .mailContent .htmlMail #mailHTML {
+      padding: 10px; }
+      .mailContent .htmlMail #mailHTML::-moz-selection, .mailContent .htmlMail #mailHTML .setVan::-moz-selection, .mailContent .htmlMail #mailHTML .setPrice::-moz-selection, .mailContent .htmlMail #mailHTML .setLoad::-moz-selection, .mailContent .htmlMail #mailHTML .setTT::-moz-selection {
+        background: transparent; }
+      .mailContent .htmlMail #mailHTML::selection, .mailContent .htmlMail #mailHTML .setVan::selection, .mailContent .htmlMail #mailHTML .setPrice::selection, .mailContent .htmlMail #mailHTML .setLoad::selection, .mailContent .htmlMail #mailHTML .setTT::selection {
+        background: transparent; }
+      .mailContent .htmlMail #mailHTML br::-moz-selection {
+        background: transparent; }
+      .mailContent .htmlMail #mailHTML br::selection {
+        background: transparent; }
+
+.copy {
+  position: absolute;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: center;
+  top: 65%;
+  width: 100px;
+  height: 30px;
+  background: #4d90fe;
+  left: calc(50% - 50px);
+  border-radius: 4px;
+  opacity: 0;
+  -webkit-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  pointer-events: none; }
+  .copy p {
+    color: white;
+    margin: 5px; }
+
+footer {
+  width: 100vw;
+  height: 20px;
+  background: #4d90fe;
+  color: white;
+  text-align: center;
+  position: fixed;
+  bottom: 0; }
+  footer p {
+    padding: 0;
+    margin: 0; }

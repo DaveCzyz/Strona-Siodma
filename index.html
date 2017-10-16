@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-EN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Spedycja - kalkulator">
+    <meta name="author" content="David Czyż">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Asap+Condensed" rel="stylesheet">
+    <!-- build:css css/style.min.css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <!-- endbuild -->
+    <title>Transport calculator</title>
+</head>
+<body> 
+<header>
+    <p>Kalkulator ofert</p>
+</header>
+<div class="bgImage">
+<div class="generator">
+    <section class="left-side">
+        <div class="input-wrapper">
+            <input id="origin-input" class="controls" type="text" placeholder="Start">
+            <input id="waypoint-input" class="controls" type="text" placeholder="Pośredni">
+            <input id="destination-input" class="controls" type="text" placeholder="Koniec">
+        </div>
+
+        <div id="mode-selector" class="controls">
+            <input type="radio" name="type" id="changemode-free" checked="checked">
+            <label for="changemode-walking">Unikaj opłat</label>
+
+            <input type="radio" name="type" id="changemode-paid">
+            <label for="changemode-transit">Płatne</label>
+
+            <input type="checkbox" name="traffic" id="traffic">   
+        </div>
+
+
+
+
+        <div id="map"></div>
+    </section>
+
+    <section class="right-side">
+        <div class="summaryKM">
+            <span>Suma km: </span><span id="total"></span>
+        </div>
+        <div class="stawka">
+            <span>Stawka za kilometr:</span>
+            <select id="narzut">
+                <option value="0.35">0.35</option>
+                <option value="0.40">0.40</option>
+                <option value="0.42">0.42</option>
+                <option value="0.45" selected>0.45</option>
+                <option value="0.50">0.50</option>
+                <option value="0.55">0.55</option>
+                <option value="0.60">0.60</option>
+                <option value="0.65">0.65</option>
+                <option value="0.70">0.70</option>
+            </select>
+        </div>
+        <div class="auto">
+            <span>Rodzaj vana:</span>
+            <select id="van">
+                <option value="420 x 220 x 230" selected>8EP 420 x 220 x 230</option>
+                <option value="490 x 220 x 230">10EP 490 x 220 x 230</option>
+                <option value="420 x 220 x 230 taillift">420 x 220 x 230 taillift</option>
+                <option value="490 x 220 x 230 taillift">490 x 220 x 230 taillift</option>
+            </select>
+        </div>
+        <div class="czas">
+            <span>Czas do załadunku:</span>
+            <select id="loadTo">
+                <option value="1-2 hours" selected>1-2 h</option>
+                <option value="2-3 hours">2-3 h</option>
+                <option value="3-4 hours">3-4 h</option>
+                <option value="4-5 hours">4-5 h</option>
+            </select>
+        </div>
+        <div class="transitTime">
+            <span>TT:</span>
+            <select id="TT">
+                <option value="60">60</option>
+                <option value="65" selected>65</option>
+                <option value="70">70</option>
+                <option value="80">80</option>
+                <option value="90">90</option>
+            </select>   
+        </div>
+        <div class="prom">
+            <p>Wybierz prom:</p>
+            <input type="radio" name="promy" value="0" checked>Brak promu <br>
+            <input type="radio" name="promy" value="110">Dover - Calais 110e<br>
+            <input type="radio" name="promy" value="220">Dover - Calais (kółko) 220e<br>
+            <input type="radio" name="promy" value="140">Dover - Calais (tunel) 140e<br>
+            <input type="radio" name="promy" value="400">Niemcy - Szwecja (kółko) 400e<br>
+            <input type="radio" name="promy" value="150">UK - IE 150e<br>
+            <input type="radio" name="promy" value="300">UK - IE (kółko) 300e<br>
+            <input type="radio" name="promy" value="200">Tallin - Helsniki 200e<br>
+            <input type="radio" name="promy" value="400">Tallin - Helsniki (kółko) 400e<br>
+        </div>
+        <div class="waluta">
+            <p>Waluta:</p>
+            <input type="radio" name="currency" value="EUR" checked>EURO<br>
+            <input type="radio" name="currency" value="GBP">GBP<br>
+        </div>
+        <button type="button" id="generuj">GENERUJ OFERTĘ</button>
+    </section>
+</div>
+
+
+<!-- WYGENERUJ TYTUŁ MAILA -->
+
+
+<div class="generujTytul">
+    <button type="button" id="copyTitle">Kopiuj</button>
+    <p>Tytuł maila:</p>
+    <span id="mailTitle">Reply for quote: <span class="origin"></span> => <span class="dest"></span></span>
+</div>
+
+<!-- WYGENERUJ TREŚĆ MAILA -->
+
+
+<div class="mailContent">
+    <div class="standardMail">
+        <p>Treść maila:</p>
+        <button type="button" id="copyTxt">Kopiuj</button>
+        <p id="mail">
+
+            Good morning,<br>
+            I can offer a van <span class="setVan"></span> with following terms:
+            <br><br>
+            Price: <span class="setPrice"></span>
+            <br>
+            Loading to: <span class="setLoad"></span>
+            <br>
+            TT: <span class="setTT"></span>
+            <br>
+            <br>
+            ------
+            <br>
+            <br>
+            If that cargo is for parial load I can find another solution.
+            <br>
+            Price above is for DEDICATED EXPRESS VAN.
+            <br>
+            <br>
+            ------
+            <br>
+            <br>
+            Our traffic department will inform you about currently van position - 24/7.
+            <br>
+            <br>
+
+        </p>
+    </div>
+
+    <div class="htmlMail">
+        <p>Treść maila (format HTML):</p>
+        <button type="button" id="copyHtml">Kopiuj</button><br>
+        <p id="mailHTML">
+<!-- head / style -->
+        &#60;head&#62; <br>
+        &#60;style&#62; <br>
+        .container b &#123; font-size: 20px;&#125; <br>
+        .container i &#123; color: #ff2d2d; font-size: 20px;&#125; <br>
+        .price &#123; margin: 10px;&#125; <br>
+        .price td &#123; border: 1px solid black; <br>
+        text-align: center; <br>
+        padding: 10px; <br>
+        background-color: rgb(201, 221, 255); <br>
+        &#125; <br>
+        .container span &#123; <br>
+        text-align: center; <br>
+        width: 100px; <br>
+        margin: 0; <br>
+        display: block; <br>
+        &#125; <br>
+        &#60;/style&#62;<br>
+        &#60;/head&#62; <br>
+<!-- body -->
+        &#60;div class="container"&#62; <br>
+        &#60;p&#62;Good morning,&#60;/p&#62; <br>
+        &#60;p&#62;I can offer a van <span class="setVan"></span> with following terms&#60;/p&#62; <br>
+        <br>
+        &#60;table class="price"&#62; <br>
+        &#60;tr&#62; <br>
+        &#60;td&#62;Price: &#60;/td&#62;<br>
+<!-- price -->
+        &#60;td&#62;<span class="setPrice"></span>&#60;/td&#62;<br>
+        &#60;/tr&#62; <br>
+        &#60;tr&#62; <br>
+        &#60;td&#62;Loading to: &#60;/td&#62;<br>
+<!-- loading to -->
+        &#60;td&#62;<span class="setLoad"></span>&#60;/td&#62;<br>
+        &#60;/tr&#62; <br>
+
+        &#60;tr&#62; <br>
+        &#60;td&#62;TT: &#60;/td&#62;<br>
+        &#60;td&#62;<span class="setTT"></span>&#60;/td&#62;<br>
+        &#60;/tr&#62; <br>
+
+        &#60;/table&#62; <br>
+
+
+        &#60;span&#62;------&#60;/span&#62; <br>
+        &#60;p&#62;If that cargo is for parial load I can find another solution.&#60;/p&#62; <br>
+        &#60;p&#62;Price above is for &#60;b&#62;DEDICATED EXPRESS VAN. &#60;/b&#62;&#60;/p&#62; <br>
+        &#60;span&#62;------&#60;/span&#62; <br>
+        &#60;br&#62; <br>
+        &#60;i&#62;Our traffic department will inform you about currently van position - 24/7.&#60;/i&#62; <br>
+        &#60;br&#62; <br>
+        &#60;/div&#62;           
+        </p>
+    </div>
+</div>
+
+
+<div class="copy">
+    <p>Skopiowano</p>
+</div>
+
+<!--
+    {  - &#123;
+    }  - &#125;
+    "  - &#34
+    <  - &#60;
+    >  - &#62; 
+
+    <> -  &#60;&#62;
+-->
+</div>
+<footer>
+    <p>Dawid Czyż - 2017</p>
+</footer>
+
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhzLJLUf0J5D-NGmw8bo6olPPN2L_uQoY&libraries=places&callback=initMap"></script>
+<!-- build:js js/script.min.js -->
+<script src="js/script.js"></script>
+<!-- endbuild -->
+</body>
+</html>
