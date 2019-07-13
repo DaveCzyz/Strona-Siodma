@@ -1,5 +1,9 @@
 # Kalkulator ofert
 
+#EDIT
+  Uwaga, strona nie jest zaktualizowana, możliwe wystąpienie błędów zwłaszcza z google maps api
+#
+
 Na potrzeby mojej aktualnej pracy napisałem sobię prostą apkę do szybkiego tworzenia ofert dla klientów. Nie chcę wchodzić w szczegóły ale przy jej pomocy na podstawie zapytania klienta moge szybko przygotować dla niego ofertę, nie musząc liczyć wszystkiego ręcznie na kalkulatorze i pisać za każdym razem nowego maila.
 
 Użyłem tutaj czystego JavaScriptu, Google Maps Api oraz kursów walut z NBP API (pobierane za pomocą AJAX'a). Miałem jeszcze plan żeby móc wysyłać od razu maila z poziomu strony ale niestety szefostwo nie udostępni mi haseł do ich serwera ;)
